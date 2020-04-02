@@ -26,7 +26,7 @@ data_hash.each_with_index do |record, idx|
   unless prev_record.nil?
     counter = 0
     last_el = data_hash[0..(idx-1)].find_all do |el|
-        break if record['heading_level'] > 0 && counter != 0 && el['heading_level'] == 0 # break if block of 0 exceeded
+        break if record['heading_level'] > 0 && counter != 0 && el['heading_level'] == 0
         counter += 1
         el['heading_level'] == record['heading_level']
     end&.last
@@ -42,7 +42,7 @@ data_hash.each_with_index do |record, idx|
     end
   end
 
-  str = "#{tabs}#{record['number']}.#{record['title']}\n".gsub('..', '.') # poor solution :(
+  str = "#{tabs}#{record['number']}.#{record['title']}\n".gsub('..', '.') # need to refactor it
 
   file.write(str)
 end
